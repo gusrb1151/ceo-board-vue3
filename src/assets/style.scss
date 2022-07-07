@@ -1,0 +1,186 @@
+@charset "utf-8";
+// color
+
+$black: #000000;
+$gray_900: #131517;
+$gray_800: #2E3137;
+$gray_700: #454A52;
+$gray_600: #6D7583;
+$gray_500: #96A0AC;
+$gray_400: #B6C0CC;
+$gray_300: #D5DDE7;
+$gray_200: #E6ECF3;
+$gray_100: #F2F5F9;
+$gray_50: #F8FAFC;
+$gray_e0:#E0E0E0;
+
+$white: #ffffff;
+$indigo: #162149;
+$indigo_6: #F1F2F4;
+$deep_blue: #1846A5;
+$deep_blue_6: #E8EDF6;
+$light_blue: #0091FF;
+$green: #3CBA4D;
+$green_12: #E7F6E9;
+$mint: #F7FAFB;
+$orange: #F85A40;
+$orange_6: #FFF5F4;
+$danger: #B43D29;
+$danger_6: #F6E7E5;
+$danger_20: #F0D8D4;
+$red_20: #F0D8D4;
+$red_6: #F6E7E5;
+
+$dim: rgba(1, 1, 1, 0.6);
+
+// font
+$display: 36px;
+$headline : 24px;
+$title : 18px;
+$subtitle: 16px;
+$body : 14px;
+
+//display
+.display1 {
+  font-size: $display;
+  font-weight: bold;
+}
+.display2 {
+  font-size: $display;
+  font-weight: normal;
+}
+.display3 {
+  font-size: $display;
+  font-weight: 300;
+}
+//headline
+.headline1 {
+  font-size: $headline;
+  font-weight: bold;
+}
+.headline2 {
+  font-size: $headline;
+  font-weight: normal;
+}
+.headline3 {
+  font-size: $display;
+  font-weight: 300;
+}
+// title
+.title1 {
+  font-size: $title;
+  font-weight: bold;
+}
+.title2 {
+  font-size: $title;
+  font-weight: normal;
+}
+.title3 {
+  font-size: $title;
+  font-weight: 300;
+}
+// subtitle
+.subtitle1 {
+  font-size: $subtitle;
+  font-weight: bold;
+}
+.subtitle2 {
+  font-size: $subtitle;
+  font-weight: normal;
+}
+.subtitle3 {
+  font-size: $subtitle;
+  font-weight: 300;
+}
+// body
+.body1 {
+  font-size: $body;
+  font-weight: bold;
+}
+.body2 {
+  font-size: $body;
+  font-weight: normal;
+}
+.body3 {
+  font-size: $body;
+  font-weight: 300;
+}
+
+
+
+// 반응형 mixin
+$s_pc: 1230px;
+$s_pc_min: 1024px;
+$tablet: 1023px;
+$tablet_min: 800px;
+$mobile: 799px;
+$mobile_min: 360px;
+$s_mobile: 359px;
+
+// @include 해당디바이스로 사용
+@mixin s_pc {
+  @media only screen and (max-width: $s_pc) {
+    @content;
+  }
+}
+@mixin s_pc_min {
+  @media only screen and (min-width: $s_pc_min) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (max-width: $tablet) {
+    @content;
+  }
+}
+@mixin tablet_min {
+  @media only screen and (min-width: $tablet_min) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media only screen and (max-width: $mobile) {
+    @content;
+  }
+}
+@mixin mobile_min {
+  @media only screen and (min-width: $mobile_min) {
+    @content;
+  }
+}
+@mixin s_mobile {
+  @media only screen and (max-width: $s_mobile) {
+    @content;
+  }
+}
+
+:export {
+  black: $black;
+  gray_900: $gray_900;
+  gray_800: $gray_800;
+  gray_700: $gray_700;
+  gray_600: $gray_600;
+  gray_500: $gray_500;
+  gray_400: $gray_400;
+  gray_300: $gray_300;
+  gray_200: $gray_200;
+  gray_100: $gray_100;
+  gray_50: $gray_50;
+  gray_e0: $gray_e0;
+
+  white: $white;
+  indigo: $indigo;
+  indigo_6: $indigo_6;
+  deep_blue: $deep_blue;
+  deep_blue_6: $deep_blue_6;
+  light_blue: $light_blue;
+  green: $green;
+  green_12: $green_12;
+  mint: $mint;
+  orange: $orange;
+  orange_6: $orange_6;
+  danger: $danger;
+  danger_20: $danger_20;
+  red_20: $red_20;
+  red_6: $red_6;
+}
