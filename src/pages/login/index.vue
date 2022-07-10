@@ -42,33 +42,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
-import { useRouter } from 'vue-router';
-import { login } from '@/api/login';
+import { defineComponent, reactive } from 'vue'
+import { useRouter } from 'vue-router'
+import { login } from '@/api/login'
 
 export default defineComponent({
   name: 'LoginView',
-  setup() {
-    const router = useRouter();
+  setup () {
+    const router = useRouter()
     const data = reactive({
       email: '',
-      password: '',
-    });
-    function isLoginBtnDisabled() {
-      return (data.email === '' || data.password === '');
+      password: ''
+    })
+    function isLoginBtnDisabled () {
+      return (data.email === '' || data.password === '')
     }
-    function loginHandler() {
+    function loginHandler () {
       login(data).then((res: any) => {
-        router.push('/');
-      }).catch();
+        router.push('/')
+      }).catch()
     }
     return {
       data,
       loginHandler,
-      isLoginBtnDisabled,
-    };
-  },
-});
+      isLoginBtnDisabled
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">

@@ -10,7 +10,7 @@
   </button>
 </template>
 <script>
-import styleVars from '@/assets/style.scss';
+import styleVars from '@/assets/style.scss'
 
 export default {
   name: 'meal-button',
@@ -18,88 +18,93 @@ export default {
     customClass: String,
     type: {
       default: 'primary', // text, success, danger, infor, warning
-      type: String,
+      type: String
     },
     icon: {
       default: '', // file name from under @/assets/
-      type: String,
+      type: String
     },
     look: {
       default: '', // outlined, light, strip, strip-light, rounded
-      type: String,
+      type: String
     },
     color: {
       default: '',
-      type: String,
+      type: String
     },
     size: {
       default: 'normal', // x-small, small, normal, medium, large x-large
-      type: String,
+      type: String
     },
     state: {
       default: '', // loading, hover, focus, ..
-      type: String,
+      type: String
     },
     disabled: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     static: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     throttled: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     throttleTime: {
       default: 1000,
-      type: Number,
-    },
+      type: Number
+    }
   },
-  computed: {
-    iconPath() {
-      return this.icon.length > 0 ? `@/assets/img/${this.icon}` : '';
-    },
-    getColor() {
+  setup (props) {
+    console.log(1111, props.icon)
+    function iconPath () {
+      return props.icon.length > 0 ? `@/assets/img/${props.icon}` : ''
+    }
+    function getColor () {
       try {
-        if (this.type !== 'text') return '';
-        return styleVars[this.color];
+        if (props.type !== 'text') return ''
+        return styleVars[props.color]
       } catch (error) {
-        return '';
+        return ''
       }
-    },
+    }
+    return {
+      iconPath,
+      getColor
+    }
   },
   methods: {
-    noSlot() {
-      return Object.keys(this.$slots).length <= 0;
+    noSlot () {
+      return Object.keys(this.$slots).length <= 0
     },
-    onclick($event) {
+    onclick ($event) {
       if (this.disabled || this.timeout !== null) {
-        $event.stopPropagation();
-        return false;
+        $event.stopPropagation()
+        return false
       }
-      if (!this.throttled) { this.$emit('click', $event); return false; }
+      if (!this.throttled) { this.$emit('click', $event); return false }
       if (this.isFirst) {
-        this.$emit('click', $event);
-        this.isFirst = false;
+        this.$emit('click', $event)
+        this.isFirst = false
         this.timeout = setTimeout(() => {
-          clearTimeout(this.timeout);
-          this.timeout = null;
-          this.isFirst = true;
-        }, this.throttleTime);
+          clearTimeout(this.timeout)
+          this.timeout = null
+          this.isFirst = true
+        }, this.throttleTime)
       }
-      return false;
+      return false
     },
-    virgin() {
-      this.isFirst = true;
-      this.timeout = null;
-    },
+    virgin () {
+      this.isFirst = true
+      this.timeout = null
+    }
   },
-  created() {
-    this.virgin();
-  },
-};
+  created () {
+    this.virgin()
+  }
+}
 </script>
 <style lang='scss' scoped>
 @import "@/assets/style";
